@@ -28,8 +28,20 @@ app.post('/', (req, res) => {
   res.json(req.body)
 });
 
-server.listen(config.port, () => {
-  console.log(`listening on *:${config.port}`);
+io.on('connect', (payload) => {
+  console.log('server connect')
+})
+
+io.on('connection', (socket) => {
+  socket.on('test', (msg) => {
+    console.log('message: ' + msg);
+  });
+});
+
+const port = config.port
+
+server.listen(port, () => {
+  console.log(`listening on *:${port}`);
 });
 
 module.exports = {
