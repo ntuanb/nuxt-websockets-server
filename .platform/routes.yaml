@@ -1,0 +1,9 @@
+"https://www.{default}/":
+  type: upstream
+  upstream: "socket:http"
+  cache:
+    enabled: false
+
+"https://{default}/":
+  type: redirect
+  to: "https://www.{default}/"

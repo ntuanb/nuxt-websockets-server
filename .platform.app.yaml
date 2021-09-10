@@ -1,0 +1,20 @@
+# The name of this app. Must be unique within a project.
+# Requires multi project plan
+name: socket
+type: 'nodejs:14'
+build:
+  flavor: none
+dependencies:
+  nodejs:
+    yarn: "*"
+hooks:
+  build: |
+    yarn install
+web:
+  commands:
+    start: node io.js
+  locations:
+    '/':
+      passthru: true
+      request_buffering:
+        enabled: false
