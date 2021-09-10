@@ -4,6 +4,8 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 
+app.use(express.json())
+
 const config = require('platformsh-config').config();
 
 const io = new Server(server, {
@@ -23,6 +25,7 @@ setInterval(() => {
 
 app.post('/', (req, res) => {
   io.emit('test', req.body)
+  res.json(req.body)
 });
 
 server.listen(config.port, () => {
