@@ -22,19 +22,7 @@ setInterval(() => {
 }, 1000);
 
 app.get('/', (req, res) => {
-  res.json('success')
-});
-
-app.get('/test', (req, res) => {
-  res.json('test')
-});
-
-io.on('connection', (socket) => {
-  console.log('a user connected');
-});
-
-io.on('message', (msg) => {
-  console.log(msg);
+  io.emit('test', req.body)
 });
 
 server.listen(config.port, () => {
