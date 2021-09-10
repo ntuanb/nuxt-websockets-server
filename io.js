@@ -21,7 +21,7 @@ setInterval(() => {
   io.emit("tick", i);
 }, 1000);
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
   io.emit('test', req.body)
 });
 
